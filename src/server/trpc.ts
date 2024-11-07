@@ -1,10 +1,13 @@
 import { initTRPC } from "@trpc/server";
 import { ZodError } from "zod";
 import superjson from "superjson";
+import { db } from "./db";
 
+//This adds context to every tRPC call
 export const createTRPCContext = async (opts: { headers: Headers }) => {
   return {
     ...opts,
+    db,
   };
 };
 
